@@ -68,14 +68,6 @@ def _calc_paths ():
   """
   Essentially Floyd-Warshall algorithm
   """
-  def dump():
-    for i in sws:
-        for j in sws:
-            a = path_map[i][j][0]
-            if a is None: 
-                a = "*"
-            print(a, end=" ")
-        print()
   sws = switches.values()
   path_map.clear()
   for k in sws:
