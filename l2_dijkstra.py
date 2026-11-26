@@ -62,59 +62,38 @@ FLOW_HARD_TIMEOUT = 30
 # How long is allowable to set up a path?
 PATH_SETUP_TIME = 4
 
+
+# веса каналов = стоимости STP из части 1 (dpid sN = N)
+W = {(1,2):1,(2,3):1,(3,4):4,(1,5):4,(3,5):1,(4,5):1}
+
 def _calc_paths ():
-  """
-  Модификация: алгоритм Дейкстры вместо Флойда-Уоршелла.
-  """
-  def dump ():
-    for i in sws:
-      for j in sws:
-        a = path_map[i][j][0]
-        if a is None: a = "*"
-        print(a, end=" ")
-      print()
-      
+  """ Dijkstra (вариант 6) """
+  import heapq
   sws = list(switches.values())
   path_map.clear()
-  
-  # Инициализация графа
-  graph = {}
-  for sw_dpid in adjacency:
-    graph[sw_dpid] = {}
-    for port, neighbor_dpid in adjacency[sw_dpid].items():
-      if neighbor_dpid is not None:
-        graph[sw_dpid][neighbor_dpid] = 1
+  INF = float('inf')
 
-  # Алгоритм Дейкстры
-  for src in graph:
-    dist = {node: float('inf') for node in graph}
-    dist[src] = 0
-    prev = {node: None for node in graph}
-    pq = [(0, src)]
+  def w(a,b):
+      return W.get((min(a.dpid,b.dpid), max(a.dpid,b.dpid)), 1)
 
-    while pq:
-      current_dist, u = heapq.heappop(pq)
-      if current_dist > dist[u]:
-        continue
-      for v, weight in graph[u].items():
-        distance = current_dist + weight
-        if distance < dist[v]:
-          dist[v] = distance
-          prev[v] = u
-          heapq.heappush(pq, (distance, v))
-
-    # Запись в path_map
-    for dst in graph:
-      if src == dst:
-        path_map[src][dst] = (0, None)
-      elif dist[dst] != float('inf'):
-        curr = dst
-        while prev[curr] != src and prev[curr] is not None:
-          curr = prev[curr]
-        first_hop = curr
-        path_map[src][dst] = (dist[dst], first_hop)
-        
-  # dump() # раскомментируйте, если хотите видеть матрицу путей
+  for src in sws:
+      dist={s:INF for s in sws}; prev={s:None for s in sws}; vis=set()
+      dist[src]=0; ctr=0; pq=[(0,ctr,src)]
+      while pq:
+          d,_,u = heapq.heappop(pq)
+          if u in vis: continue
+          vis.add(u)
+          for v,port in adjacency[u].items():
+              if port is None: continue
+              nd = dist[u] + w(u,v)
+              if nd < dist[v]:
+                  dist[v]=nd; prev[v]=u; ctr+=1
+                  heapq.heappush(pq,(nd,ctr,v))
+      for dst in sws:
+          if dst==src: path_map[src][dst]=(0,None)
+          elif dist[dst]<INF:
+              inter = None if prev[dst]==src else prev[dst]
+              path_map[src][dst]=(dist[dst],inter)
 
 def _get_raw_path(src, dst):
     """
