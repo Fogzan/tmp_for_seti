@@ -63,9 +63,6 @@ FLOW_HARD_TIMEOUT = 30
 PATH_SETUP_TIME = 4
 
 
-# веса каналов = стоимости STP из части 1 (dpid sN = N)
-W = {(1,2):1,(2,3):1,(3,4):4,(1,5):4,(3,5):1,(4,5):1}
-
 def _calc_paths():
     """
     Dijkstra's algorithm.

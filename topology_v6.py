@@ -16,11 +16,11 @@ h3 = net.addHost('h3')
 h4 = net.addHost('h4')
 
 # 2. Создаем коммутаторы (failMode='secure' обязателен для работы с POX)
-s1 = net.addSwitch('s1', failMode='secure')
-s2 = net.addSwitch('s2', failMode='secure')
-s3 = net.addSwitch('s3', failMode='secure')
-s4 = net.addSwitch('s4', failMode='secure')
-s5 = net.addSwitch('s5', failMode='secure')
+s1 = net.addSwitch('s1')
+s2 = net.addSwitch('s2')
+s3 = net.addSwitch('s3')
+s4 = net.addSwitch('s4')
+s5 = net.addSwitch('s5')
 
 # 3. Подключаем контроллер
 c0 = net.addController('c0', controller=RemoteController, ip="127.0.0.1", port=6633)
