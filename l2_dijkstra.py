@@ -67,31 +67,33 @@ PATH_SETUP_TIME = 4
 import heapq
 
 def _calc_paths():
-    """
-    Алгоритм Дейкстры для поиска кратчайших путей.
-    """
-    sws = switches.values()
     path_map.clear()
-
+    
     graph = {}
     for sw_dpid in adjacency:
         graph[sw_dpid] = {}
-        # Обратите внимание на dict()
-        for port, neighbor_dpid in dict(adjacency[sw_dpid]).items():
-            if neighbor_dpid is not None:
+        for port in adjacency[sw_dpid]:
+            neighbor_dpid = adjacency[sw_dpid][port]
+            if neighbor_dpid is not None and neighbor_dpid in switches:
                 graph[sw_dpid][neighbor_dpid] = 1 
 
     for src in graph:
-        dist = {node: float('inf') for node in graph}
+        dist = {}
+        prev = {}
+        for node in graph:
+            dist[node] = float('inf')
+            prev[node] = None
+            
         dist[src] = 0
-        prev = {node: None for node in graph}
         pq = [(0, src)]
 
-        while pq:
+        while len(pq) > 0:
             current_dist, u = heapq.heappop(pq)
             if current_dist > dist[u]:
                 continue
-            for v, weight in graph[u].iteritems(): # здесь обычный dict, iteritems работает
+                
+            for v in graph[u]:
+                weight = graph[u][v]
                 distance = current_dist + weight
                 if distance < dist[v]:
                     dist[v] = distance
