@@ -1,0 +1,585 @@
+POX 0.7.0 (gar) / Copyright 2011-2020 James McCauley, et al.
+DEBUG:core:POX 0.7.0 (gar) going up...
+DEBUG:core:Running on CPython (3.5.2/Oct 7 2020 17:19:02)
+DEBUG:core:Platform is Linux-4.4.0-142-generic-i686-athlon-with-Ubuntu-16.04-xenial
+WARNING:version:POX requires one of the following versions of Python: 3.6 3.7 3.8 3.9
+WARNING:version:You're running Python 3.5.
+WARNING:version:If you run into problems, try using a supported version.
+INFO:core:POX 0.7.0 (gar) is up.
+DEBUG:openflow.of_01:Listening on 0.0.0.0:6633
+INFO:openflow.of_01:[00-00-00-00-00-01 2] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-01
+DEBUG:forwarding.l2_dijkstra:Connect [00-00-00-00-00-01 2]
+INFO:openflow.of_01:[00-00-00-00-00-02 3] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-02
+DEBUG:forwarding.l2_dijkstra:Connect [00-00-00-00-00-02 3]
+INFO:openflow.of_01:[00-00-00-00-00-03 4] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-03
+DEBUG:forwarding.l2_dijkstra:Connect [00-00-00-00-00-03 4]
+INFO:openflow.of_01:[00-00-00-00-00-04 5] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-04
+DEBUG:forwarding.l2_dijkstra:Connect [00-00-00-00-00-04 5]
+INFO:openflow.discovery:link detected: 00-00-00-00-00-02.2 -> 00-00-00-00-00-03.1
+INFO:openflow.discovery:link detected: 00-00-00-00-00-03.1 -> 00-00-00-00-00-02.2
+INFO:openflow.discovery:link detected: 00-00-00-00-00-02.1 -> 00-00-00-00-00-01.2
+INFO:openflow.discovery:link detected: 00-00-00-00-00-04.2 -> 00-00-00-00-00-03.2
+INFO:openflow.discovery:link detected: 00-00-00-00-00-03.2 -> 00-00-00-00-00-04.2
+INFO:openflow.of_01:[00-00-00-00-00-05 6] connected
+DEBUG:openflow.discovery:Installing flow for 00-00-00-00-00-05
+DEBUG:forwarding.l2_dijkstra:Connect [00-00-00-00-00-05 6]
+DEBUG:openflow.discovery:Dropping LLDP packet 256
+INFO:openflow.discovery:link detected: 00-00-00-00-00-05.5 -> 00-00-00-00-00-04.3
+DEBUG:openflow.discovery:Dropping LLDP packet 256
+INFO:openflow.discovery:link detected: 00-00-00-00-00-05.4 -> 00-00-00-00-00-03.3
+DEBUG:openflow.discovery:Dropping LLDP packet 256
+INFO:openflow.discovery:link detected: 00-00-00-00-00-05.3 -> 00-00-00-00-00-01.3
+INFO:openflow.discovery:link timeout: 00-00-00-00-00-04.2 -> 00-00-00-00-00-03.2
+INFO:openflow.discovery:link timeout: 00-00-00-00-00-05.4 -> 00-00-00-00-00-03.3
+INFO:openflow.discovery:link timeout: 00-00-00-00-00-03.1 -> 00-00-00-00-00-02.2
+INFO:openflow.discovery:link timeout: 00-00-00-00-00-05.5 -> 00-00-00-00-00-04.3
+INFO:openflow.discovery:link timeout: 00-00-00-00-00-02.1 -> 00-00-00-00-00-01.2
+INFO:openflow.discovery:link timeout: 00-00-00-00-00-02.2 -> 00-00-00-00-00-03.1
+INFO:openflow.discovery:link timeout: 00-00-00-00-00-03.2 -> 00-00-00-00-00-04.2
+INFO:openflow.discovery:link timeout: 00-00-00-00-00-05.3 -> 00-00-00-00-00-01.3
+DEBUG:openflow.of_01:1 connection aborted
+DEBUG:openflow.discovery:Dropping LLDP packet 257
+INFO:openflow.discovery:link detected: 00-00-00-00-00-04.2 -> 00-00-00-00-00-03.2
+DEBUG:openflow.discovery:Dropping LLDP packet 256
+INFO:openflow.discovery:link detected: 00-00-00-00-00-01.3 -> 00-00-00-00-00-05.3
+DEBUG:openflow.discovery:Dropping LLDP packet 256
+INFO:openflow.discovery:link detected: 00-00-00-00-00-01.2 -> 00-00-00-00-00-02.1
+DEBUG:openflow.discovery:Dropping LLDP packet 258
+INFO:openflow.discovery:link detected: 00-00-00-00-00-02.2 -> 00-00-00-00-00-03.1
+DEBUG:openflow.discovery:Dropping LLDP packet 257
+INFO:openflow.discovery:link detected: 00-00-00-00-00-03.1 -> 00-00-00-00-00-02.2
+DEBUG:openflow.discovery:Dropping LLDP packet 257
+INFO:openflow.discovery:link detected: 00-00-00-00-00-02.1 -> 00-00-00-00-00-01.2
+DEBUG:openflow.discovery:Dropping LLDP packet 257
+INFO:openflow.discovery:link detected: 00-00-00-00-00-03.2 -> 00-00-00-00-00-04.2
+DEBUG:openflow.discovery:Dropping LLDP packet 258
+INFO:openflow.discovery:link detected: 00-00-00-00-00-05.3 -> 00-00-00-00-00-01.3
+DEBUG:openflow.discovery:Dropping LLDP packet 259
+DEBUG:openflow.discovery:Dropping LLDP packet 259
+DEBUG:openflow.discovery:Dropping LLDP packet 260
+DEBUG:openflow.discovery:Dropping LLDP packet 258
+DEBUG:openflow.discovery:Dropping LLDP packet 258
+DEBUG:openflow.discovery:Dropping LLDP packet 257
+DEBUG:openflow.discovery:Dropping LLDP packet 259
+DEBUG:openflow.discovery:Dropping LLDP packet 260
+DEBUG:openflow.discovery:Dropping LLDP packet 261
+DEBUG:openflow.discovery:Dropping LLDP packet 261
+DEBUG:openflow.discovery:Dropping LLDP packet 262
+DEBUG:openflow.discovery:Dropping LLDP packet 259
+DEBUG:openflow.discovery:Dropping LLDP packet 260
+DEBUG:openflow.discovery:Dropping LLDP packet 258
+DEBUG:openflow.discovery:Dropping LLDP packet 261
+DEBUG:openflow.discovery:Dropping LLDP packet 262
+DEBUG:openflow.discovery:Dropping LLDP packet 263
+DEBUG:openflow.discovery:Dropping LLDP packet 263
+DEBUG:openflow.discovery:Dropping LLDP packet 264
+DEBUG:openflow.discovery:Dropping LLDP packet 260
+DEBUG:openflow.discovery:Dropping LLDP packet 262
+DEBUG:openflow.discovery:Dropping LLDP packet 259
+DEBUG:openflow.discovery:Dropping LLDP packet 263
+DEBUG:openflow.discovery:Dropping LLDP packet 264
+DEBUG:openflow.discovery:Dropping LLDP packet 265
+DEBUG:openflow.discovery:Dropping LLDP packet 265
+DEBUG:openflow.discovery:Dropping LLDP packet 266
+DEBUG:openflow.discovery:Dropping LLDP packet 261
+DEBUG:openflow.discovery:Dropping LLDP packet 264
+DEBUG:openflow.discovery:Dropping LLDP packet 260
+DEBUG:openflow.discovery:Dropping LLDP packet 265
+DEBUG:openflow.discovery:Dropping LLDP packet 266
+DEBUG:openflow.discovery:Dropping LLDP packet 267
+DEBUG:openflow.discovery:Dropping LLDP packet 267
+DEBUG:openflow.discovery:Dropping LLDP packet 268
+DEBUG:openflow.discovery:Dropping LLDP packet 262
+DEBUG:openflow.discovery:Dropping LLDP packet 266
+DEBUG:openflow.discovery:Dropping LLDP packet 261
+DEBUG:openflow.discovery:Dropping LLDP packet 267
+DEBUG:openflow.discovery:Dropping LLDP packet 268
+DEBUG:openflow.discovery:Dropping LLDP packet 269
+DEBUG:openflow.discovery:Dropping LLDP packet 269
+DEBUG:openflow.discovery:Dropping LLDP packet 270
+DEBUG:openflow.discovery:Dropping LLDP packet 263
+DEBUG:openflow.discovery:Dropping LLDP packet 268
+DEBUG:openflow.discovery:Dropping LLDP packet 262
+DEBUG:openflow.discovery:Dropping LLDP packet 269
+DEBUG:openflow.discovery:Dropping LLDP packet 270
+DEBUG:openflow.discovery:Dropping LLDP packet 271
+DEBUG:openflow.discovery:Dropping LLDP packet 271
+DEBUG:openflow.discovery:Dropping LLDP packet 272
+DEBUG:openflow.discovery:Dropping LLDP packet 264
+DEBUG:openflow.discovery:Dropping LLDP packet 270
+DEBUG:openflow.discovery:Dropping LLDP packet 263
+DEBUG:openflow.discovery:Dropping LLDP packet 271
+DEBUG:openflow.discovery:Dropping LLDP packet 272
+DEBUG:openflow.discovery:Dropping LLDP packet 273
+DEBUG:openflow.discovery:Dropping LLDP packet 273
+DEBUG:openflow.discovery:Dropping LLDP packet 274
+DEBUG:openflow.discovery:Dropping LLDP packet 265
+DEBUG:openflow.discovery:Dropping LLDP packet 272
+DEBUG:openflow.discovery:Dropping LLDP packet 264
+DEBUG:openflow.discovery:Dropping LLDP packet 273
+DEBUG:openflow.discovery:Dropping LLDP packet 274
+DEBUG:openflow.discovery:Dropping LLDP packet 275
+DEBUG:openflow.discovery:Dropping LLDP packet 275
+DEBUG:openflow.discovery:Dropping LLDP packet 276
+DEBUG:openflow.discovery:Dropping LLDP packet 266
+DEBUG:openflow.discovery:Dropping LLDP packet 274
+DEBUG:openflow.discovery:Dropping LLDP packet 265
+DEBUG:openflow.discovery:Dropping LLDP packet 275
+DEBUG:openflow.discovery:Dropping LLDP packet 276
+DEBUG:openflow.discovery:Dropping LLDP packet 277
+DEBUG:openflow.discovery:Dropping LLDP packet 277
+DEBUG:openflow.discovery:Dropping LLDP packet 278
+DEBUG:openflow.discovery:Dropping LLDP packet 267
+DEBUG:forwarding.l2_dijkstra:Learned ee:c5:7c:30:8d:ef at 00-00-00-00-00-01.1
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Learned 9a:3b:73:b3:2a:e2 at 00-00-00-00-00-04.1
+ERROR:core:Exception while handling Connection!PacketIn...
+Traceback (most recent call last):
+  File "/home/mininet/pox/pox/lib/revent/revent.py", line 242, in raiseEventNoErrors
+    return self.raiseEvent(event, *args, **kw)
+  File "/home/mininet/pox/pox/lib/revent/revent.py", line 295, in raiseEvent
+    rv = event._invoke(handler, *args, **kw)
+  File "/home/mininet/pox/pox/lib/revent/revent.py", line 168, in _invoke
+    return handler(self, *args, **kw)
+  File "/home/mininet/pox/pox/forwarding/l2_dijkstra.py", line 379, in _handle_PacketIn
+    self.install_path(dest[0], dest[1], match, event)
+  File "/home/mininet/pox/pox/forwarding/l2_dijkstra.py", line 277, in install_path
+    p = _get_path(self, dst_sw, event.port, last_port)
+  File "/home/mininet/pox/pox/forwarding/l2_dijkstra.py", line 179, in _get_path
+    path = _get_raw_path(src, dst)
+  File "/home/mininet/pox/pox/forwarding/l2_dijkstra.py", line 141, in _get_raw_path
+    _calc_paths()
+  File "/home/mininet/pox/pox/forwarding/l2_dijkstra.py", line 113, in _calc_paths
+    heapq.heappush(pq, (nd, v))
+TypeError: unorderable types: Switch() < Switch()
+DEBUG:openflow.discovery:Dropping LLDP packet 277
+DEBUG:openflow.discovery:Dropping LLDP packet 267
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 279
+DEBUG:openflow.discovery:Dropping LLDP packet 280
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Learned d2:77:9e:03:ee:b2 at 00-00-00-00-00-05.1
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 283
+DEBUG:openflow.discovery:Dropping LLDP packet 283
+DEBUG:openflow.discovery:Dropping LLDP packet 284
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 276
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 284
+DEBUG:openflow.discovery:Dropping LLDP packet 276
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Learned 8e:5a:00:3e:0a:2a at 00-00-00-00-00-05.2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 286
+DEBUG:openflow.discovery:Dropping LLDP packet 287
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 290
+DEBUG:openflow.discovery:Dropping LLDP packet 290
+DEBUG:openflow.discovery:Dropping LLDP packet 291
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (9a:3b:73:b3:2a:e2 -> ee:c5:7c:30:8d:ef)
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 283
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 291
+DEBUG:openflow.discovery:Dropping LLDP packet 287
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 293
+DEBUG:openflow.discovery:Dropping LLDP packet 294
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 297
+DEBUG:openflow.discovery:Dropping LLDP packet 297
+DEBUG:openflow.discovery:Dropping LLDP packet 298
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 290
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (d2:77:9e:03:ee:b2 -> ee:c5:7c:30:8d:ef)
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (d2:77:9e:03:ee:b2 -> 9a:3b:73:b3:2a:e2)
+DEBUG:forwarding.l2_dijkstra:Flood multicast from d2:77:9e:03:ee:b2
+DEBUG:forwarding.l2_dijkstra:Installing path for 8e:5a:00:3e:0a:2a -> d2:77:9e:03:ee:b2 0806 (1 hops)
+DEBUG:forwarding.l2_dijkstra:Flood multicast from d2:77:9e:03:ee:b2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from d2:77:9e:03:ee:b2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from d2:77:9e:03:ee:b2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from d2:77:9e:03:ee:b2
+DEBUG:forwarding.l2_dijkstra:Sending delayed packet out 00-00-00-00-00-05
+DEBUG:forwarding.l2_dijkstra:Installing path for d2:77:9e:03:ee:b2 -> 8e:5a:00:3e:0a:2a 0800 (1 hops)
+DEBUG:forwarding.l2_dijkstra:Sending delayed packet out 00-00-00-00-00-05
+DEBUG:forwarding.l2_dijkstra:Installing path for 8e:5a:00:3e:0a:2a -> d2:77:9e:03:ee:b2 0800 (1 hops)
+DEBUG:forwarding.l2_dijkstra:Sending delayed packet out 00-00-00-00-00-05
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (8e:5a:00:3e:0a:2a -> ee:c5:7c:30:8d:ef)
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (8e:5a:00:3e:0a:2a -> 9a:3b:73:b3:2a:e2)
+DEBUG:forwarding.l2_dijkstra:Installing path for 8e:5a:00:3e:0a:2a -> d2:77:9e:03:ee:b2 0800 (1 hops)
+DEBUG:openflow.discovery:Dropping LLDP packet 298
+DEBUG:forwarding.l2_dijkstra:Sending delayed packet out 00-00-00-00-00-05
+DEBUG:openflow.discovery:Dropping LLDP packet 305
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 299
+DEBUG:openflow.discovery:Dropping LLDP packet 300
+DEBUG:openflow.discovery:Dropping LLDP packet 301
+DEBUG:openflow.discovery:Dropping LLDP packet 301
+DEBUG:openflow.discovery:Dropping LLDP packet 302
+WARNING:forwarding.l2_dijkstra:Can't get from ee:c5:7c:30:8d:ef to 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (ee:c5:7c:30:8d:ef -> 9a:3b:73:b3:2a:e2)
+WARNING:forwarding.l2_dijkstra:Can't get from ee:c5:7c:30:8d:ef to d2:77:9e:03:ee:b2
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (ee:c5:7c:30:8d:ef -> d2:77:9e:03:ee:b2)
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 295
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Installing path for 8e:5a:00:3e:0a:2a -> d2:77:9e:03:ee:b2 0806 (1 hops)
+DEBUG:forwarding.l2_dijkstra:Sending delayed packet out 00-00-00-00-00-05
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 301
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 313
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 303
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Flood multicast from ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 305
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (9a:3b:73:b3:2a:e2 -> ee:c5:7c:30:8d:ef)
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to d2:77:9e:03:ee:b2
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (9a:3b:73:b3:2a:e2 -> d2:77:9e:03:ee:b2)
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 309
+DEBUG:openflow.discovery:Dropping LLDP packet 307
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 311
+WARNING:forwarding.l2_dijkstra:Can't get from ee:c5:7c:30:8d:ef to d2:77:9e:03:ee:b2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Flood multicast from 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 303
+DEBUG:openflow.discovery:Dropping LLDP packet 308
+WARNING:forwarding.l2_dijkstra:Can't get from ee:c5:7c:30:8d:ef to d2:77:9e:03:ee:b2
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (d2:77:9e:03:ee:b2 -> ee:c5:7c:30:8d:ef)
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (d2:77:9e:03:ee:b2 -> 9a:3b:73:b3:2a:e2)
+DEBUG:forwarding.l2_dijkstra:Installing path for d2:77:9e:03:ee:b2 -> 8e:5a:00:3e:0a:2a 0800 (1 hops)
+DEBUG:openflow.discovery:Dropping LLDP packet 329
+DEBUG:forwarding.l2_dijkstra:Sending delayed packet out 00-00-00-00-00-05
+DEBUG:forwarding.l2_dijkstra:Installing path for 8e:5a:00:3e:0a:2a -> d2:77:9e:03:ee:b2 0800 (1 hops)
+DEBUG:forwarding.l2_dijkstra:Sending delayed packet out 00-00-00-00-00-05
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (8e:5a:00:3e:0a:2a -> ee:c5:7c:30:8d:ef)
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:forwarding.l2_dijkstra:Dest unreachable (8e:5a:00:3e:0a:2a -> 9a:3b:73:b3:2a:e2)
+DEBUG:forwarding.l2_dijkstra:Installing path for 8e:5a:00:3e:0a:2a -> d2:77:9e:03:ee:b2 0800 (1 hops)
+DEBUG:forwarding.l2_dijkstra:Sending delayed packet out 00-00-00-00-00-05
+DEBUG:openflow.discovery:Dropping LLDP packet 309
+WARNING:forwarding.l2_dijkstra:Can't get from ee:c5:7c:30:8d:ef to d2:77:9e:03:ee:b2
+DEBUG:openflow.discovery:Dropping LLDP packet 310
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to d2:77:9e:03:ee:b2
+DEBUG:openflow.discovery:Dropping LLDP packet 316
+DEBUG:openflow.discovery:Dropping LLDP packet 311
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to d2:77:9e:03:ee:b2
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+DEBUG:openflow.discovery:Dropping LLDP packet 317
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 9a:3b:73:b3:2a:e2 to d2:77:9e:03:ee:b2
+DEBUG:openflow.discovery:Dropping LLDP packet 310
+DEBUG:openflow.discovery:Dropping LLDP packet 310
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 336
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 311
+DEBUG:openflow.discovery:Dropping LLDP packet 312
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from d2:77:9e:03:ee:b2 to 9a:3b:73:b3:2a:e2
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to ee:c5:7c:30:8d:ef
+WARNING:forwarding.l2_dijkstra:Can't get from 8e:5a:00:3e:0a:2a to 9a:3b:73:b3:2a:e2
+DEBUG:openflow.discovery:Dropping LLDP packet 318
+DEBUG:openflow.discovery:Dropping LLDP packet 313
+DEBUG:openflow.discovery:Dropping LLDP packet 319
+DEBUG:openflow.discovery:Dropping LLDP packet 311
+DEBUG:openflow.discovery:Dropping LLDP packet 312
+DEBUG:openflow.discovery:Dropping LLDP packet 347
+DEBUG:openflow.discovery:Dropping LLDP packet 313
+DEBUG:openflow.discovery:Dropping LLDP packet 314
+DEBUG:openflow.discovery:Dropping LLDP packet 320
+DEBUG:openflow.discovery:Dropping LLDP packet 315
+DEBUG:openflow.discovery:Dropping LLDP packet 321
+DEBUG:openflow.discovery:Dropping LLDP packet 312
+DEBUG:openflow.discovery:Dropping LLDP packet 314
+DEBUG:openflow.discovery:Dropping LLDP packet 348
+DEBUG:openflow.discovery:Dropping LLDP packet 315
+DEBUG:openflow.discovery:Dropping LLDP packet 316
+DEBUG:openflow.discovery:Dropping LLDP packet 322
+DEBUG:openflow.discovery:Dropping LLDP packet 317
+DEBUG:openflow.discovery:Dropping LLDP packet 323
+DEBUG:openflow.discovery:Dropping LLDP packet 313
+DEBUG:openflow.discovery:Dropping LLDP packet 316
+DEBUG:openflow.discovery:Dropping LLDP packet 349
+DEBUG:openflow.discovery:Dropping LLDP packet 317
+DEBUG:openflow.discovery:Dropping LLDP packet 318
+DEBUG:openflow.discovery:Dropping LLDP packet 324
+DEBUG:openflow.discovery:Dropping LLDP packet 319
+DEBUG:openflow.discovery:Dropping LLDP packet 325
+DEBUG:openflow.discovery:Dropping LLDP packet 314
+DEBUG:openflow.discovery:Dropping LLDP packet 318
+DEBUG:openflow.discovery:Dropping LLDP packet 350
+DEBUG:openflow.discovery:Dropping LLDP packet 319
+DEBUG:openflow.discovery:Dropping LLDP packet 320
+DEBUG:openflow.discovery:Dropping LLDP packet 326
+DEBUG:openflow.discovery:Dropping LLDP packet 321
+DEBUG:openflow.discovery:Dropping LLDP packet 327
+DEBUG:openflow.discovery:Dropping LLDP packet 315
+DEBUG:openflow.discovery:Dropping LLDP packet 320
+DEBUG:openflow.discovery:Dropping LLDP packet 351
+DEBUG:openflow.discovery:Dropping LLDP packet 321
+DEBUG:openflow.discovery:Dropping LLDP packet 322
+DEBUG:openflow.discovery:Dropping LLDP packet 328
+DEBUG:openflow.discovery:Dropping LLDP packet 323
+DEBUG:openflow.discovery:Dropping LLDP packet 329
+DEBUG:openflow.discovery:Dropping LLDP packet 316
+DEBUG:openflow.discovery:Dropping LLDP packet 322
+DEBUG:openflow.discovery:Dropping LLDP packet 352
+DEBUG:openflow.discovery:Dropping LLDP packet 323
+DEBUG:openflow.discovery:Dropping LLDP packet 324
+DEBUG:openflow.discovery:Dropping LLDP packet 330
+DEBUG:openflow.discovery:Dropping LLDP packet 325
+DEBUG:openflow.discovery:Dropping LLDP packet 331
+DEBUG:openflow.discovery:Dropping LLDP packet 317
+DEBUG:openflow.discovery:Dropping LLDP packet 324
+DEBUG:openflow.discovery:Dropping LLDP packet 353
+DEBUG:openflow.discovery:Dropping LLDP packet 325
+DEBUG:openflow.discovery:Dropping LLDP packet 326
+DEBUG:openflow.discovery:Dropping LLDP packet 332
+DEBUG:openflow.discovery:Dropping LLDP packet 327
+DEBUG:openflow.discovery:Dropping LLDP packet 333
+DEBUG:openflow.discovery:Dropping LLDP packet 318
+DEBUG:openflow.discovery:Dropping LLDP packet 326
+DEBUG:openflow.discovery:Dropping LLDP packet 354
+DEBUG:openflow.discovery:Dropping LLDP packet 327
+DEBUG:openflow.discovery:Dropping LLDP packet 328
+DEBUG:openflow.discovery:Dropping LLDP packet 334
+DEBUG:openflow.discovery:Dropping LLDP packet 329
+DEBUG:openflow.discovery:Dropping LLDP packet 335
+DEBUG:openflow.discovery:Dropping LLDP packet 319
+DEBUG:openflow.discovery:Dropping LLDP packet 328
+DEBUG:openflow.discovery:Dropping LLDP packet 355
+DEBUG:openflow.discovery:Dropping LLDP packet 329
+DEBUG:openflow.discovery:Dropping LLDP packet 330
+DEBUG:openflow.discovery:Dropping LLDP packet 336
+DEBUG:openflow.discovery:Dropping LLDP packet 331
+DEBUG:openflow.discovery:Dropping LLDP packet 337
+DEBUG:openflow.discovery:Dropping LLDP packet 320
+DEBUG:openflow.discovery:Dropping LLDP packet 330
+DEBUG:openflow.discovery:Dropping LLDP packet 356
+DEBUG:openflow.discovery:Dropping LLDP packet 331
+DEBUG:openflow.discovery:Dropping LLDP packet 332
+DEBUG:openflow.discovery:Dropping LLDP packet 338
+DEBUG:openflow.discovery:Dropping LLDP packet 333
+DEBUG:openflow.discovery:Dropping LLDP packet 339
+DEBUG:openflow.discovery:Dropping LLDP packet 321
+DEBUG:openflow.discovery:Dropping LLDP packet 332
+DEBUG:openflow.discovery:Dropping LLDP packet 357
+DEBUG:openflow.discovery:Dropping LLDP packet 333
+DEBUG:openflow.discovery:Dropping LLDP packet 334
+DEBUG:openflow.discovery:Dropping LLDP packet 340
+DEBUG:openflow.discovery:Dropping LLDP packet 335
+DEBUG:openflow.discovery:Dropping LLDP packet 341
+DEBUG:openflow.discovery:Dropping LLDP packet 322
+DEBUG:openflow.discovery:Dropping LLDP packet 334
+DEBUG:openflow.discovery:Dropping LLDP packet 358
+DEBUG:openflow.discovery:Dropping LLDP packet 335
+DEBUG:openflow.discovery:Dropping LLDP packet 336
+DEBUG:openflow.discovery:Dropping LLDP packet 342
+DEBUG:openflow.discovery:Dropping LLDP packet 337
+DEBUG:openflow.discovery:Dropping LLDP packet 343
+DEBUG:openflow.discovery:Dropping LLDP packet 323
+DEBUG:openflow.discovery:Dropping LLDP packet 336
+DEBUG:openflow.discovery:Dropping LLDP packet 359
+DEBUG:openflow.discovery:Dropping LLDP packet 337
+DEBUG:openflow.discovery:Dropping LLDP packet 338
+DEBUG:openflow.discovery:Dropping LLDP packet 344
+DEBUG:openflow.discovery:Dropping LLDP packet 339
+DEBUG:openflow.discovery:Dropping LLDP packet 345
+DEBUG:openflow.discovery:Dropping LLDP packet 324
+DEBUG:openflow.discovery:Dropping LLDP packet 338
+DEBUG:openflow.discovery:Dropping LLDP packet 360
+DEBUG:openflow.discovery:Dropping LLDP packet 339
+DEBUG:openflow.discovery:Dropping LLDP packet 340
+DEBUG:openflow.discovery:Dropping LLDP packet 346
+DEBUG:openflow.discovery:Dropping LLDP packet 341
+DEBUG:openflow.discovery:Dropping LLDP packet 347
+DEBUG:openflow.discovery:Dropping LLDP packet 325
+DEBUG:openflow.discovery:Dropping LLDP packet 340
+DEBUG:openflow.discovery:Dropping LLDP packet 361
+DEBUG:openflow.discovery:Dropping LLDP packet 341
+DEBUG:openflow.discovery:Dropping LLDP packet 342
+DEBUG:openflow.discovery:Dropping LLDP packet 348
+DEBUG:openflow.discovery:Dropping LLDP packet 343
+DEBUG:openflow.discovery:Dropping LLDP packet 349
+DEBUG:openflow.discovery:Dropping LLDP packet 326
+DEBUG:openflow.discovery:Dropping LLDP packet 342
+DEBUG:openflow.discovery:Dropping LLDP packet 362
+DEBUG:openflow.discovery:Dropping LLDP packet 343
+DEBUG:openflow.discovery:Dropping LLDP packet 344
+DEBUG:openflow.discovery:Dropping LLDP packet 350
+DEBUG:openflow.discovery:Dropping LLDP packet 345
+DEBUG:openflow.discovery:Dropping LLDP packet 351
+DEBUG:openflow.discovery:Dropping LLDP packet 327
+DEBUG:openflow.discovery:Dropping LLDP packet 344
+DEBUG:openflow.discovery:Dropping LLDP packet 363
+DEBUG:openflow.discovery:Dropping LLDP packet 345
+DEBUG:openflow.discovery:Dropping LLDP packet 346
+DEBUG:openflow.discovery:Dropping LLDP packet 352
+DEBUG:openflow.discovery:Dropping LLDP packet 347
+DEBUG:openflow.discovery:Dropping LLDP packet 353
+DEBUG:openflow.discovery:Dropping LLDP packet 328
+DEBUG:openflow.discovery:Dropping LLDP packet 346
+DEBUG:openflow.discovery:Dropping LLDP packet 364
+DEBUG:openflow.discovery:Dropping LLDP packet 347
+DEBUG:openflow.discovery:Dropping LLDP packet 348
+DEBUG:openflow.discovery:Dropping LLDP packet 354
+DEBUG:openflow.discovery:Dropping LLDP packet 349
+DEBUG:openflow.discovery:Dropping LLDP packet 355
+DEBUG:openflow.discovery:Dropping LLDP packet 329
+DEBUG:openflow.discovery:Dropping LLDP packet 348
+DEBUG:openflow.discovery:Dropping LLDP packet 365
+DEBUG:openflow.discovery:Dropping LLDP packet 349
+DEBUG:openflow.discovery:Dropping LLDP packet 350
+DEBUG:openflow.discovery:Dropping LLDP packet 356
+DEBUG:openflow.discovery:Dropping LLDP packet 351
+INFO:openflow.of_01:[00-00-00-00-00-04 5] closed
+DEBUG:forwarding.l2_dijkstra:Disconnect [00-00-00-00-00-04 5]
+INFO:openflow.of_01:[00-00-00-00-00-01 2] closed
+DEBUG:forwarding.l2_dijkstra:Disconnect [00-00-00-00-00-01 2]
+INFO:openflow.of_01:[00-00-00-00-00-03 4] closed
+DEBUG:forwarding.l2_dijkstra:Disconnect [00-00-00-00-00-03 4]
+INFO:openflow.of_01:[00-00-00-00-00-05 6] closed
+DEBUG:forwarding.l2_dijkstra:Disconnect [00-00-00-00-00-05 6]
+INFO:openflow.of_01:[00-00-00-00-00-02 3] closed
+DEBUG:forwarding.l2_dijkstra:Disconnect [00-00-00-00-00-02 3]
+INFO:core:Going down...
+INFO:core:Down.
+ERROR:openflow.of_01:Exception reading connection None
+Traceback (most recent call last):
+  File "/home/mininet/pox/pox/openflow/of_01.py", line 1084, in run
+    rlist, wlist, elist = yield Select(sockets, [], sockets, 5)
+GeneratorExit
+DEBUG:openflow.of_01:No longer listening for connections
