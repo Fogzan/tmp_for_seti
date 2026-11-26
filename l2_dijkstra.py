@@ -30,14 +30,16 @@ FLOW_IDLE_TIMEOUT = 10
 FLOW_HARD_TIMEOUT = 30
 PATH_SETUP_TIME = 4
 
+import heapq
+
 def _calc_paths():
     path_map.clear()
     
-    print("\n=== СТРОИМ ГРАФ ===")
-    print("adjacency содержит:", adjacency)
+    print("\n=== BUILDING GRAPH ===")
+    print("Adjacency data:", adjacency)
     
     graph = {}
-    # Принудительно добавляем ВСЕ коммутаторы в граф
+
     for sw in switches:
         graph[sw] = {}
         
@@ -46,17 +48,14 @@ def _calc_paths():
             graph[sw_dpid] = {}
             
         for port, neighbor_dpid in adjacency[sw_dpid].items():
-            if neighbor_dpid is not None:
-                # Если сосед есть в switches, добавляем связь
-                if neighbor_dpid in switches:
-                    graph[sw_dpid][neighbor_dpid] = 1
-                    if neighbor_dpid not in graph:
-                        graph[neighbor_dpid] = {}
-                    graph[neighbor_dpid][sw_dpid] = 1
+            if neighbor_dpid is not None and neighbor_dpid in switches:
+                graph[sw_dpid][neighbor_dpid] = 1
+                if neighbor_dpid not in graph:
+                    graph[neighbor_dpid] = {}
+                graph[neighbor_dpid][sw_dpid] = 1
     
-    print("Итоговый граф:", graph)
+    print("Final Graph:", graph)
 
-    # Дейкстра
     for src in graph:
         dist = {node: float('inf') for node in graph}
         dist[src] = 0
