@@ -64,27 +64,49 @@ FLOW_HARD_TIMEOUT = 30
 PATH_SETUP_TIME = 4
 
 
-def _calc_paths ():
-  """
-  Essentially Floyd-Warshall algorithm
-  """
-  sws = switches.values()
-  path_map.clear()
-  for k in sws:
-    for j,port in adjacency[k].iteritems():
-      if port is None: continue
-      path_map[k][j] = (1,None)
-    path_map[k][k] = (0,None) # distance, intermediate
+import heapq
 
-  for k in sws:
-    for i in sws:
-      for j in sws:
-        if path_map[i][k][0] is not None:
-          if path_map[k][j][0] is not None:
-            ikj_dist = path_map[i][k][0]+path_map[k][j][0]
-            if path_map[i][j][0] is None or ikj_dist < path_map[i][j][0]:
-              path_map[i][j] = (ikj_dist, k)
+def _calc_paths():
+    """
+    Алгоритм Дейкстры для поиска кратчайших путей.
+    """
+    sws = switches.values()
+    path_map.clear()
 
+    graph = {}
+    for sw_dpid in adjacency:
+        graph[sw_dpid] = {}
+        # Обратите внимание на dict()
+        for port, neighbor_dpid in dict(adjacency[sw_dpid]).items():
+            if neighbor_dpid is not None:
+                graph[sw_dpid][neighbor_dpid] = 1 
+
+    for src in graph:
+        dist = {node: float('inf') for node in graph}
+        dist[src] = 0
+        prev = {node: None for node in graph}
+        pq = [(0, src)]
+
+        while pq:
+            current_dist, u = heapq.heappop(pq)
+            if current_dist > dist[u]:
+                continue
+            for v, weight in graph[u].iteritems(): # здесь обычный dict, iteritems работает
+                distance = current_dist + weight
+                if distance < dist[v]:
+                    dist[v] = distance
+                    prev[v] = u
+                    heapq.heappush(pq, (distance, v))
+
+        for dst in graph:
+            if src == dst:
+                path_map[src][dst] = (0, None)
+            elif dist[dst] != float('inf'):
+                curr = dst
+                while prev[curr] != src and prev[curr] is not None:
+                    curr = prev[curr]
+                first_hop = curr
+                path_map[src][dst] = (dist[dst], first_hop)
 
 def _get_raw_path (src, dst):
   """
