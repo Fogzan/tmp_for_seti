@@ -72,28 +72,25 @@ def _calc_paths():
     graph = {}
     for sw_dpid in adjacency:
         graph[sw_dpid] = {}
-        for port in adjacency[sw_dpid]:
-            neighbor_dpid = adjacency[sw_dpid][port]
+        for port, neighbor_dpid in adjacency[sw_dpid].items():
             if neighbor_dpid is not None and neighbor_dpid in switches:
-                graph[sw_dpid][neighbor_dpid] = 1 
+                graph[sw_dpid][neighbor_dpid] = 1
 
     for src in graph:
-        dist = {}
-        prev = {}
-        for node in graph:
-            dist[node] = float('inf')
-            prev[node] = None
-            
+        dist = {node: float('inf') for node in graph}
         dist[src] = 0
+        
+        prev = {node: None for node in graph}
+        
         pq = [(0, src)]
 
-        while len(pq) > 0:
+        while pq:
             current_dist, u = heapq.heappop(pq)
+            
             if current_dist > dist[u]:
                 continue
-                
-            for v in graph[u]:
-                weight = graph[u][v]
+
+            for v, weight in graph[u].items():
                 distance = current_dist + weight
                 if distance < dist[v]:
                     dist[v] = distance
@@ -108,6 +105,7 @@ def _calc_paths():
                 while prev[curr] != src and prev[curr] is not None:
                     curr = prev[curr]
                 first_hop = curr
+                
                 path_map[src][dst] = (dist[dst], first_hop)
 
 def _get_raw_path (src, dst):
