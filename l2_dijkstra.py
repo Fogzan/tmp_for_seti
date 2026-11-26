@@ -68,39 +68,30 @@ def _calc_paths ():
   """
   Essentially Floyd-Warshall algorithm
   """
-
-  def dump ():
+  def dump():
     for i in sws:
-      for j in sws:
-        a = path_map[i][j][0]
-        #a = adjacency[i][j]
-        if a is None: a = "*"
-        print(a, end=' ')
-      print()
-
+        for j in sws:
+            a = path_map[i][j][0]
+            if a is None: 
+                a = "*"
+            print(a, end=" ")
+        print()
   sws = switches.values()
   path_map.clear()
   for k in sws:
-    for j,port in adjacency[k].items():
+    for j,port in adjacency[k].iteritems():
       if port is None: continue
       path_map[k][j] = (1,None)
     path_map[k][k] = (0,None) # distance, intermediate
-
-  #dump()
 
   for k in sws:
     for i in sws:
       for j in sws:
         if path_map[i][k][0] is not None:
           if path_map[k][j][0] is not None:
-            # i -> k -> j exists
             ikj_dist = path_map[i][k][0]+path_map[k][j][0]
             if path_map[i][j][0] is None or ikj_dist < path_map[i][j][0]:
-              # i -> k -> j is better than existing
               path_map[i][j] = (ikj_dist, k)
-
-  #print "--------------------"
-  #dump()
 
 
 def _get_raw_path (src, dst):
