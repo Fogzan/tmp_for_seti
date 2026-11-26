@@ -62,74 +62,59 @@ FLOW_HARD_TIMEOUT = 30
 # How long is allowable to set up a path?
 PATH_SETUP_TIME = 4
 
+def _calc_paths ():
+  """
+  Модификация: алгоритм Дейкстры вместо Флойда-Уоршелла.
+  """
+  def dump ():
+    for i in sws:
+      for j in sws:
+        a = path_map[i][j][0]
+        if a is None: a = "*"
+        print(a, end=" ")
+      print()
+      
+  sws = list(switches.values())
+  path_map.clear()
+  
+  # Инициализация графа
+  graph = {}
+  for sw_dpid in adjacency:
+    graph[sw_dpid] = {}
+    for port, neighbor_dpid in adjacency[sw_dpid].items():
+      if neighbor_dpid is not None:
+        graph[sw_dpid][neighbor_dpid] = 1
 
-def _calc_paths():
-    """
-    Dijkstra's algorithm.
-    For every source switch we compute shortest paths to all other switches.
-    path_map[i][j] = (distance, intermediate)  -- intermediate is the first
-    hop from i towards j (kept for compatibility with the rest of the code).
-    _prev_map[i][j] = previous node on the shortest path i -> j.
-    """
-    def dump():
-        for i in sws:
-            for j in sws:
-                a = path_map[i][j][0]
-                if a is None:
-                    a = "*"
-                print(a, end=' ')
-            print()
+  # Алгоритм Дейкстры
+  for src in graph:
+    dist = {node: float('inf') for node in graph}
+    dist[src] = 0
+    prev = {node: None for node in graph}
+    pq = [(0, src)]
 
-    sws = list(switches.values())
-    path_map.clear()
-    _prev_map.clear()
+    while pq:
+      current_dist, u = heapq.heappop(pq)
+      if current_dist > dist[u]:
+        continue
+      for v, weight in graph[u].items():
+        distance = current_dist + weight
+        if distance < dist[v]:
+          dist[v] = distance
+          prev[v] = u
+          heapq.heappush(pq, (distance, v))
 
-    # Initialization: direct links have weight 1
-    for k in sws:
-        path_map[k][k] = (0, None)
-        for j, port in adjacency[k].items():
-            if port is None:
-                continue
-            path_map[k][j] = (1, None)
-
-    # Run Dijkstra from every source
-    for src in sws:
-        dist = {s: float('inf') for s in sws}
-        prev = {s: None for s in sws}
-        dist[src] = 0
-        pq = [(0, src)]
-
-        while pq:
-            d, u = heapq.heappop(pq)
-            if d > dist[u]:
-                continue
-            for v, port in adjacency[u].items():
-                if port is None:
-                    continue
-                nd = d + 1  # all edges have weight 1
-                if nd < dist[v]:
-                    dist[v] = nd
-                    prev[v] = u
-                    heapq.heappush(pq, (nd, v))
-
-        # Fill path_map and _prev_map
-        for dst in sws:
-            if dist[dst] == float('inf'):
-                continue
-            if dst == src:
-                path_map[src][dst] = (0, None)
-                _prev_map[src][dst] = None
-                continue
-            # find the first hop from src towards dst
-            node = dst
-            while prev[node] != src and prev[node] is not None:
-                node = prev[node]
-            if prev[node] == src:
-                path_map[src][dst] = (dist[dst], node)
-            else:
-                path_map[src][dst] = (dist[dst], None)
-            _prev_map[src][dst] = prev[dst]
-
+    # Запись в path_map
+    for dst in graph:
+      if src == dst:
+        path_map[src][dst] = (0, None)
+      elif dist[dst] != float('inf'):
+        curr = dst
+        while prev[curr] != src and prev[curr] is not None:
+          curr = prev[curr]
+        first_hop = curr
+        path_map[src][dst] = (dist[dst], first_hop)
+        
+  # dump() # раскомментируйте, если хотите видеть матрицу путей
 
 def _get_raw_path(src, dst):
     """
