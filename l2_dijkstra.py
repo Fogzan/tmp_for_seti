@@ -32,14 +32,31 @@ PATH_SETUP_TIME = 4
 
 def _calc_paths():
     path_map.clear()
-    graph = {}
     
+    print("\n=== СТРОИМ ГРАФ ===")
+    print("adjacency содержит:", adjacency)
+    
+    graph = {}
+    # Принудительно добавляем ВСЕ коммутаторы в граф
+    for sw in switches:
+        graph[sw] = {}
+        
     for sw_dpid in adjacency:
-        graph[sw_dpid] = {}
+        if sw_dpid not in graph:
+            graph[sw_dpid] = {}
+            
         for port, neighbor_dpid in adjacency[sw_dpid].items():
             if neighbor_dpid is not None:
-                graph[sw_dpid][neighbor_dpid] = 1
+                # Если сосед есть в switches, добавляем связь
+                if neighbor_dpid in switches:
+                    graph[sw_dpid][neighbor_dpid] = 1
+                    if neighbor_dpid not in graph:
+                        graph[neighbor_dpid] = {}
+                    graph[neighbor_dpid][sw_dpid] = 1
+    
+    print("Итоговый граф:", graph)
 
+    # Дейкстра
     for src in graph:
         dist = {node: float('inf') for node in graph}
         dist[src] = 0
