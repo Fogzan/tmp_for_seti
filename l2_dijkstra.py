@@ -35,6 +35,7 @@ from collections import defaultdict
 from pox.openflow.discovery import Discovery
 from pox.lib.util import dpid_to_str
 import time
+import heapq
 
 log = core.getLogger()
 
@@ -64,22 +65,29 @@ FLOW_HARD_TIMEOUT = 30
 PATH_SETUP_TIME = 4
 
 
-import heapq
 
 def _calc_paths():
     path_map.clear()
     
+    all_nodes = set()
+    for sw in adjacency:
+        all_nodes.add(sw)
+        for port, neighbor in adjacency[sw].items():
+            if neighbor is not None:
+                all_nodes.add(neighbor)
+
     graph = {}
+    for node in all_nodes:
+        graph[node] = {}
+        
     for sw_dpid in adjacency:
-        graph[sw_dpid] = {}
         for port, neighbor_dpid in adjacency[sw_dpid].items():
-            if neighbor_dpid is not None and neighbor_dpid in switches:
-                graph[sw_dpid][neighbor_dpid] = 1
+            if neighbor_dpid is not None:
+                graph[sw_dpid][neighbor_dpid] = 1 
 
     for src in graph:
         dist = {node: float('inf') for node in graph}
         dist[src] = 0
-        
         prev = {node: None for node in graph}
         
         pq = [(0, src)]
@@ -87,12 +95,12 @@ def _calc_paths():
         while pq:
             current_dist, u = heapq.heappop(pq)
             
-            if current_dist > dist[u]:
+            if current_dist > dist.get(u, float('inf')):
                 continue
-
-            for v, weight in graph[u].items():
+                
+            for v, weight in graph.get(u, {}).items():
                 distance = current_dist + weight
-                if distance < dist[v]:
+                if distance < dist.get(v, float('inf')):
                     dist[v] = distance
                     prev[v] = u
                     heapq.heappush(pq, (distance, v))
@@ -100,12 +108,11 @@ def _calc_paths():
         for dst in graph:
             if src == dst:
                 path_map[src][dst] = (0, None)
-            elif dist[dst] != float('inf'):
+            elif dist.get(dst) != float('inf'):
                 curr = dst
-                while prev[curr] != src and prev[curr] is not None:
+                while prev.get(curr) != src and prev.get(curr) is not None:
                     curr = prev[curr]
                 first_hop = curr
-                
                 path_map[src][dst] = (dist[dst], first_hop)
 
 def _get_raw_path (src, dst):
