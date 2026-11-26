@@ -15,11 +15,11 @@ h3 = net.addHost('h3')
 h4 = net.addHost('h4')
 
 # Коммутаторы
-s1 = net.addSwitch('s1')
-s2 = net.addSwitch('s2')
-s3 = net.addSwitch('s3')
-s4 = net.addSwitch('s4')
-s5 = net.addSwitch('s5')
+s1 = net.addSwitch('s1', failMode='secure')
+s2 = net.addSwitch('s2', failMode='secure')
+s3 = net.addSwitch('s3', failMode='secure')
+s4 = net.addSwitch('s4', failMode='secure')
+s5 = net.addSwitch('s5', failMode='secure')
 
 # Контроллер POX
 c0 = net.addController('c0', controller=RemoteController,
