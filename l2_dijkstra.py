@@ -66,34 +66,63 @@ PATH_SETUP_TIME = 4
 # веса каналов = стоимости STP из части 1 (dpid sN = N)
 W = {(1,2):1,(2,3):1,(3,4):4,(1,5):4,(3,5):1,(4,5):1}
 
-def _calc_paths ():
-  """ Dijkstra (вариант 6) """
-  import heapq
-  sws = list(switches.values())
-  path_map.clear()
-  INF = float('inf')
+def _calc_paths():
+    """
+    Dijkstra's algorithm.
+    For every source switch we compute shortest paths to all other switches.
+    """
+    sws = list(switches.values())
+    path_map.clear()
+    _prev_map.clear()
 
-  def w(a,b):
-      return W.get((min(a.dpid,b.dpid), max(a.dpid,b.dpid)), 1)
+    # Initialization: direct links have weight 1
+    for k in sws:
+        path_map[k][k] = (0, None)
+        _prev_map[k][k] = None
+        for j, port in adjacency[k].items():
+            if port is None:
+                continue
+            path_map[k][j] = (1, None)
+            _prev_map[k][j] = k
 
-  for src in sws:
-      dist={s:INF for s in sws}; prev={s:None for s in sws}; vis=set()
-      dist[src]=0; ctr=0; pq=[(0,ctr,src)]
-      while pq:
-          d,_,u = heapq.heappop(pq)
-          if u in vis: continue
-          vis.add(u)
-          for v,port in adjacency[u].items():
-              if port is None: continue
-              nd = dist[u] + w(u,v)
-              if nd < dist[v]:
-                  dist[v]=nd; prev[v]=u; ctr+=1
-                  heapq.heappush(pq,(nd,ctr,v))
-      for dst in sws:
-          if dst==src: path_map[src][dst]=(0,None)
-          elif dist[dst]<INF:
-              inter = None if prev[dst]==src else prev[dst]
-              path_map[src][dst]=(dist[dst],inter)
+    # Run Dijkstra from every source
+    for src in sws:
+        dist = {s: float('inf') for s in sws}
+        prev = {s: None for s in sws}
+        dist[src] = 0
+        # Кортеж (distance, dpid, switch) — dpid нужен, чтобы heapq
+        # не пытался сравнивать объекты Switch напрямую
+        pq = [(0, src.dpid, src)]
+
+        while pq:
+            d, _, u = heapq.heappop(pq)
+            if d > dist[u]:
+                continue
+            for v, port in adjacency[u].items():
+                if port is None:
+                    continue
+                nd = d + 1  # all edges have weight 1
+                if nd < dist[v]:
+                    dist[v] = nd
+                    prev[v] = u
+                    heapq.heappush(pq, (nd, v.dpid, v))
+
+        # Fill path_map and _prev_map
+        for dst in sws:
+            if dist[dst] == float('inf'):
+                continue
+            _prev_map[src][dst] = prev[dst]
+            if dst == src:
+                path_map[src][dst] = (0, None)
+                continue
+            # Find the first hop from src towards dst
+            node = dst
+            while prev[node] != src and prev[node] is not None:
+                node = prev[node]
+            if prev[node] == src:
+                path_map[src][dst] = (dist[dst], node)
+            else:
+                path_map[src][dst] = (dist[dst], None)
 
 def _get_raw_path(src, dst):
     """
