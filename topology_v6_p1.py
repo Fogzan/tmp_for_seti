@@ -42,7 +42,7 @@ net.addLink(s5, s4)
 
 net.start()
 
-# --- Настройка STP (вариант 6): s2 — ROOT ---
+# --- Настройка STP: s2 — ROOT ---
 s2.cmd('ovs-vsctl set Bridge s2 other_config:stp-priority=0x1000')  # ROOT
 s1.cmd('ovs-vsctl set Bridge s1 other_config:stp-priority=0x7000')
 s3.cmd('ovs-vsctl set Bridge s3 other_config:stp-priority=0x8000')

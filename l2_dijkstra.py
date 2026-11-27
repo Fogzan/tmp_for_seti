@@ -65,60 +65,100 @@ PATH_SETUP_TIME = 4
 
 def _calc_paths():
     """
-    Dijkstra's algorithm.
-    For every source switch we compute shortest paths to all other switches.
+    Алгоритм Дейкстры (Dijkstra's algorithm).
+    Для каждого коммутатора-источника вычисляем кратчайшие пути до всех остальных.
+    
+    Результат сохраняется в две глобальные структуры:
+      - path_map[src][dst] = (distance, first_hop)
+          расстояние и первый шаг (сосед) от src к dst — нужен для _get_raw_path
+      - _prev_map[src][dst] = предыдущий_узел
+          предыдущий узел на кратчайшем пути — нужен для восстановления маршрута
     """
+    # 1. Готовим список всех известных коммутаторов.
+    #    switches — это dict {dpid: Switch()}, нам нужен список значений.
     sws = list(switches.values())
+    
+    # 2. Очищаем кеш путей, т.к. топология могла измениться
+    #    (например, добавился/пропал линк).
     path_map.clear()
     _prev_map.clear()
 
-    # Initialization: direct links have weight 1
+    # 3. Инициализация: прямые связи между соседними коммутаторами
+    #    имеют вес 1 (один хоп).
     for k in sws:
+        # Путь от узла до самого себя — 0
         path_map[k][k] = (0, None)
         _prev_map[k][k] = None
+        # Для каждого соседа j (adjacency[k][j] != None):
         for j, port in adjacency[k].items():
             if port is None:
-                continue
-            path_map[k][j] = (1, None)
-            _prev_map[k][j] = k
+                continue  # нет физического линка — пропускаем
+            path_map[k][j] = (1, None)   # сосед достижим за 1 хоп
+            _prev_map[k][j] = k          # «пришли из k»
 
-    # Run Dijkstra from every source
+    # 4. Для КАЖДОГО коммутатора запускаем Дейкстру отдельно,
+    #    чтобы получить пути от него до всех остальных.
     for src in sws:
+        # 4.1. Инициализация расстояний: до всех ∞, до себя 0
         dist = {s: float('inf') for s in sws}
         prev = {s: None for s in sws}
         dist[src] = 0
-        # Кортеж (distance, dpid, switch) — dpid нужен, чтобы heapq
-        # не пытался сравнивать объекты Switch напрямую
+        
+        # 4.2. Приоритетная очередь (min-heap).
+        #      Кортеж (distance, dpid, switch):
+        #      - dpid нужен, чтобы heapq не пытался сравнивать
+        #        объекты Switch напрямую (иначе TypeError в Python 3).
         pq = [(0, src.dpid, src)]
 
+        # 4.3. Основной цикл Дейкстры
         while pq:
+            # Берём узел с минимальным известным расстоянием
             d, _, u = heapq.heappop(pq)
+            
+            # Если это устаревшая запись (расстояние уже меньше) — пропускаем
             if d > dist[u]:
                 continue
+            
+            # Рассматриваем всех соседей узла u
             for v, port in adjacency[u].items():
                 if port is None:
-                    continue
-                nd = d + 1  # all edges have weight 1
+                    continue  # нет линка
+                
+                nd = d + 1  # вес ребра = 1, значит новое расстояние = d + 1
+                
+                # Если нашли более короткий путь до v — обновляем
                 if nd < dist[v]:
-                    dist[v] = nd
-                    prev[v] = u
+                    dist[v] = nd       # новое кратчайшее расстояние
+                    prev[v] = u        # запоминаем, откуда пришли
                     heapq.heappush(pq, (nd, v.dpid, v))
 
-        # Fill path_map and _prev_map
+        # 5. Заполняем глобальные карты путей и предков
+        #    по результатам Дейкстры из src.
         for dst in sws:
+            # Недостижимые узлы пропускаем
             if dist[dst] == float('inf'):
                 continue
+            
+            # Запоминаем, откуда пришли в dst
             _prev_map[src][dst] = prev[dst]
+            
+            # Путь до самого себя
             if dst == src:
                 path_map[src][dst] = (0, None)
                 continue
-            # Find the first hop from src towards dst
+            
+            # 6. Ищем ПЕРВЫЙ ШАГ от src до dst.
+            #    Идём от dst назад по prev[], пока не дойдём до src.
+            #    Узел, который остался «прямо перед src», — это первый хоп.
             node = dst
             while prev[node] != src and prev[node] is not None:
                 node = prev[node]
+            
+            # Если prev[node] == src — node и есть первый шаг
             if prev[node] == src:
                 path_map[src][dst] = (dist[dst], node)
             else:
+                # Иначе (напрямую связаны) — промежуточного узла нет
                 path_map[src][dst] = (dist[dst], None)
 
 def _get_raw_path(src, dst):
